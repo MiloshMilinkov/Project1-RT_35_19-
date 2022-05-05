@@ -3,9 +3,24 @@
     <xs:complexType>
       <xs:sequence>
 
+        <xs:element name="KategorijeOglasa">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Kategorija" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="CategoryRestriction">
+                      <xs:attribute type="xs:nonNegativeInteger" name="id" use="required"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
 
 
-        <xs:element name="Oglas" maxOccurs="unbounded" minOccurs="1">
+        <xs:element name="Oglas" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
 
@@ -45,6 +60,25 @@
                 </xs:complexType>
               </xs:element>
 
+              <xs:element name="Cena">             
+                <xs:complexType>         
+                 <xs:simpleContent>   
+                    <xs:extension base="PriceRestriction">
+                      <xs:attribute  name="valuta" use="required">
+                          <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                  <xs:enumeration value="rsd"></xs:enumeration>
+                                  <xs:enumeration value="pounds"></xs:enumeration>
+                                  <xs:enumeration value="euros"></xs:enumeration>
+                                  <xs:enumeration value="dollars"></xs:enumeration>
+                              </xs:restriction>
+                          </xs:simpleType>
+                      </xs:attribute>  
+                    </xs:extension>
+                </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -59,4 +93,18 @@
     </xs:restriction>
 </xs:simpleType>
 
+<xs:simpleType name="PriceRestriction">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"></xs:minExclusive> 
+        </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="CategoryRestriction">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="Stanovi"></xs:enumeration>
+    <xs:enumeration value="Alati"></xs:enumeration>
+    <xs:enumeration value="Automobili"></xs:enumeration>
+    <xs:enumeration value="Telefoni"></xs:enumeration>
+  </xs:restriction>
+</xs:simpleType>
 </xs:schema>
