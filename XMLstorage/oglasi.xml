@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Oglasi>
+
+    <KategorijeOglasa>
+        <Kategorija id="1">Stanovi</Kategorija>
+        <Kategorija id="2">Alati</Kategorija>
+    </KategorijeOglasa>
+
+    <Oglas>
+        <Kategorija>1</Kategorija>
+        <DatumIsteka>05-7-2022</DatumIsteka>
+        <Cena valuta="rsd">54000</Cena>
+        <Deskripcija>Jednosoban stan u strogom centru Borce bez kanalizacije sve na septicku jamu!</Deskripcija>
+        <Tag></Tag>
+        <Email pristup="privatni">pera.peric@gmail.com</Email>
+    </Oglas>
+
+     <Oglas>
+        <Kategorija>2</Kategorija>
+        <DatumIsteka>05-06-2022</DatumIsteka>
+        <Cena valuta="rsd">4200</Cena>
+        <Deskripcija>Set alata za popravku polomljenih sijalica marke Bosch u savrsenom retko koriscenom stanju!</Deskripcija>
+        <Tag></Tag>
+        <Email pristup="privatni">mara.maric@gmail.com</Email>
+    </Oglas>
+
+</Oglasi>
