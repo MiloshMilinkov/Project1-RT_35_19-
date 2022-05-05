@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Oglasi [
+<!ELEMENT Oglasi (KategorijeOglasa,Oglas+)>
+<!ELEMENT KategorijeOglasa (Kategorija+)>
+<!ELEMENT Kategorija (#PCDATA)>
+<!ATTLIST Kategorija id (1 | 2 | 3) #REQUIRED>
+<!ELEMENT Oglas (KategorijaOglasa,DatumIsteka,Cena,Deskripcija,Tag*,Email)>
+<!ELEMENT KategorijaOglasa (#PCDATA)>
+<!ELEMENT DatumIsteka (#PCDATA)>
+<!ELEMENT Cena (#PCDATA)>
+<!ATTLIST Cena valuta (rsd) #REQUIRED>
+<!ELEMENT Deskripcija (#PCDATA)>
+<!ELEMENT Tag (#PCDATA)>
+<!ELEMENT Email (#PCDATA)>
+<!ATTLIST Email pristup (privatni | sluzbeni) #REQUIRED>
+]>
+
 <Oglasi>
 
     <KategorijeOglasa>
         <Kategorija id="1">Stanovi</Kategorija>
         <Kategorija id="2">Alati</Kategorija>
+        <Kategorija id="3">Automobili</Kategorija>
     </KategorijeOglasa>
 
     <Oglas>
-        <Kategorija>1</Kategorija>
+        <KategorijaOglasa>1</KategorijaOglasa>
         <DatumIsteka>05-7-2022</DatumIsteka>
         <Cena valuta="rsd">54000</Cena>
         <Deskripcija>Jednosoban stan u strogom centru Borce bez kanalizacije sve na septicku jamu!</Deskripcija>
@@ -16,7 +33,7 @@
     </Oglas>
 
      <Oglas>
-        <Kategorija>2</Kategorija>
+        <KategorijaOglasa>2</KategorijaOglasa>
         <DatumIsteka>05-06-2022</DatumIsteka>
         <Cena valuta="rsd">4200</Cena>
         <Deskripcija>Set alata za popravku polomljenih sijalica marke Bosch u savrsenom retko koriscenom stanju!</Deskripcija>
