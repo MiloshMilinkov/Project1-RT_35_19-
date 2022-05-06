@@ -1,44 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Oglasi [
-<!ELEMENT Oglasi (KategorijeOglasa,Oglas+)>
-<!ELEMENT KategorijeOglasa (Kategorija+)>
+<!-- <!DOCTYPE Oglasi [
+<!ELEMENT Oglasi (Oglas+)>
+<!ELEMENT Oglas (Kategorija,DatumIsteka,Cena,Deskripcija,Tagovi*,Email)>
 <!ELEMENT Kategorija (#PCDATA)>
-<!ATTLIST Kategorija id (1 | 2 | 3) #REQUIRED>
-<!ELEMENT Oglas (KategorijaOglasa,DatumIsteka,Cena,Deskripcija,Tag*,Email)>
-<!ELEMENT KategorijaOglasa (#PCDATA)>
 <!ELEMENT DatumIsteka (#PCDATA)>
 <!ELEMENT Cena (#PCDATA)>
-<!ATTLIST Cena valuta (rsd) #REQUIRED>
+<!ATTLIST Cena valuta (rsd | euros | pounds | dollars) #REQUIRED>
 <!ELEMENT Deskripcija (#PCDATA)>
+<!ELEMENT Tagovi (Tag+)>
 <!ELEMENT Tag (#PCDATA)>
 <!ELEMENT Email (#PCDATA)>
 <!ATTLIST Email pristup (privatni | sluzbeni) #REQUIRED>
-]>
-
+]> -->
+<!DOCTYPE Oglasi SYSTEM "./oglasi.dtd" >
 <Oglasi>
-
-    <KategorijeOglasa>
-        <Kategorija id="1">Stanovi</Kategorija>
-        <Kategorija id="2">Alati</Kategorija>
-        <Kategorija id="3">Automobili</Kategorija>
-    </KategorijeOglasa>
-
     <Oglas>
-        <KategorijaOglasa>1</KategorijaOglasa>
+        <Kategorija>Stanovi</Kategorija>
         <DatumIsteka>05-07-2022</DatumIsteka>
-        <Cena valuta="rsd">54000</Cena>
+        <Cena valuta="rsd">3400.99</Cena>
         <Deskripcija>Jednosoban stan u strogom centru Borce bez kanalizacije sve na septicku jamu!</Deskripcija>
-        <Tag></Tag>
+        <Tagovi>
+            <Tag>Centar</Tag>
+            <Tag>Jednosoban</Tag>
+        </Tagovi>
         <Email pristup="privatni">pera.peric@gmail.com</Email>
     </Oglas>
 
      <Oglas>
-        <KategorijaOglasa>2</KategorijaOglasa>
+        <Kategorija>Alati</Kategorija>
         <DatumIsteka>05-06-2022</DatumIsteka>
-        <Cena valuta="rsd">4200</Cena>
+        <Cena valuta="euros">4200</Cena>
         <Deskripcija>Set alata za popravku polomljenih sijalica marke Bosch u savrsenom retko koriscenom stanju!</Deskripcija>
-        <Tag></Tag>
-        <Email pristup="privatni">mara.maric@gmail.com</Email>
+        <Tagovi>
+            <Tag>Nekorisceno</Tag>
+        </Tagovi>
+        <Email pristup="sluzbeni">mara.maric@gmail.com</Email>
     </Oglas>
 
 </Oglasi>
