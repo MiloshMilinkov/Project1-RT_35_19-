@@ -1,13 +1,12 @@
-<!ELEMENT Oglasi (KategorijeOglasa,Oglas+)>
-<!ELEMENT KategorijeOglasa (Kategorija+)>
+
+<!ELEMENT Oglasi (Oglas+)>
+<!ELEMENT Oglas (Kategorija,DatumIsteka,Cena,Deskripcija,Tagovi*,Email)>
 <!ELEMENT Kategorija (#PCDATA)>
-<!ATTLIST Kategorija id (1 | 2 | 3) #REQUIRED>
-<!ELEMENT Oglas (KategorijaOglasa,DatumIsteka,Cena,Deskripcija,Tag*,Email)>
-<!ELEMENT KategorijaOglasa (#PCDATA)>
 <!ELEMENT DatumIsteka (#PCDATA)>
 <!ELEMENT Cena (#PCDATA)>
-<!ATTLIST Cena valuta (rsd) #REQUIRED>
+<!ATTLIST Cena valuta (rsd | euros | pounds | dollars) #REQUIRED>
 <!ELEMENT Deskripcija (#PCDATA)>
+<!ELEMENT Tagovi (Tag+)>
 <!ELEMENT Tag (#PCDATA)>
 <!ELEMENT Email (#PCDATA)>
 <!ATTLIST Email pristup (privatni | sluzbeni) #REQUIRED>
