@@ -2,24 +2,6 @@
   <xs:element name="Oglasi">
     <xs:complexType>
       <xs:sequence>
-
-        <xs:element name="KategorijeOglasa">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Kategorija" maxOccurs="unbounded" minOccurs="0">
-                <xs:complexType>
-                  <xs:simpleContent>
-                    <xs:extension base="CategoryRestriction">
-                      <xs:attribute type="xs:nonNegativeInteger" name="id" use="required"/>
-                    </xs:extension>
-                  </xs:simpleContent>
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-
-
         <xs:element name="Oglas" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
@@ -41,6 +23,15 @@
                         <xs:maxLength value="180"/>
                     </xs:restriction>
                 </xs:simpleType>
+              </xs:element>
+
+              <xs:element name="Tagovi">
+                <xs:complexType>
+                    <xs:sequence>
+                      <xs:element  name="Tag" maxOccurs="unbounded" minOccurs="0" type="xs:string">
+                      </xs:element> 
+                    </xs:sequence>
+                </xs:complexType>
               </xs:element>
 
               <xs:element name="Email" >
