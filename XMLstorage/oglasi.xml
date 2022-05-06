@@ -12,7 +12,7 @@
 <!ELEMENT Email (#PCDATA)>
 <!ATTLIST Email pristup (privatni | sluzbeni) #REQUIRED>
 ]> -->
-<!DOCTYPE Oglasi SYSTEM "./oglasi.dtd" >
+<!DOCTYPE Oglasi SYSTEM "../DTDstorage/oglasi.dtd" >
 <Oglasi>
     <Oglas>
         <Kategorija>Stanovi</Kategorija>
