@@ -9,6 +9,9 @@ let readDataFromFile = () => {
     return JSON.parse(ads);
 }
 
+let saveDatatoFile = (data) => {
+    fs.writeFileSync(PATH, JSON.stringify(data));
+}
 exports.readAllAds = () => {
     return readDataFromFile();
 }
@@ -21,5 +24,5 @@ exports.addAd = (newAd) => {
     }
     newAd.id = id;
     ads.push(newAd)
-    snimiKnjige(ads);
+    saveDatatoFile(ads);
 }
