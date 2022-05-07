@@ -35,4 +35,16 @@ app.get("/AppLayer/Views/addPage.html", (req, res) => {
 
 });
 
+app.post("/postAd", (req, res) => {
+    axios.post("http://localhost:3000/postAd", {
+        kategorija: req.body.category,
+        date: req.body.date,
+        price: req.body.price,
+        description: req.body.description,
+        tag: req.body.tag,
+        email: req.body.email
+    })
+
+})
+
 app.listen(port, () => { console.log(`klijent na portu ${port}`) });
