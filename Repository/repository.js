@@ -1,12 +1,12 @@
 const fs = require('fs');
-const PATH = "ad.json";
+const PATH = "adds.json";
 
 let readDataFromFile = () => {
     let ads = fs.readFileSync(PATH, (err, data) => {
         if (err) throw err;
         return data;
     });
-    return JSON.parse(knjige);
+    return JSON.parse(ads);
 }
 
 exports.readAllAds = () => {
