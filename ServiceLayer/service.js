@@ -10,5 +10,8 @@ app.post('/postAd', (request, response) => {
     repository.addAd(request.body);
     response.end("Ad saved.");
 })
+app.get('/getAllAds', (request, response) => {
+    response.send(repository.readAllAds());
+})
 
 app.listen(port, () => { console.log(`startovan server na portu ${port}`) });
