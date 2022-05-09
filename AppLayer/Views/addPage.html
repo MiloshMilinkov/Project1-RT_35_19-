@@ -5,22 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <style>
+        #container {
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            height: 200px;
+            background-color: white;
+        }
+        
+        #formContainer {
+            margin: auto;
+            margin-top: 100px;
+            padding: 25px;
+            background-color: #ff9a8d;
+            border: 1px solid black;
+            text-align: center;
+            width: 25%;
+            border-radius: 10px;
+        }
+        
+        .input {
+            margin: 5px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
+        .button {
+            font-weight: bold;
+            margin: 5%;
+            height: 75px;
+            width: 200px;
+            background-color: #aed6dc;
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
     <title>Post an add</title>
 </head>
 
-<body>
-    <div>
+<body id="container">
+    <div id="formContainer">
         <form action="/postAd" method="post">
-            Kategorija: <input type="text" name="category">
-            <br> Datum isteka oglasa: <input type="text" name="date">
-            <br> Cena: <input type="text" name="price">
-            <br> Deskripcija: <input type="text" name="description">
-            <br> Tagovi: <input type="text" name="tag">
+            Kategorija: <input type="text" name="category" class="input">
+            <br> Datum isteka oglasa: <input type="text" name="date" class="input">
+            <br> Cena: <input type="text" name="price" class="input">
+            <br> Deskripcija: <input type="text" name="description" class="input">
+            <br> Tagovi: <input type="text" name="tag" class="input">
             <br> Email:
-            <input type="text" name="email">
+            <input type="text" name="email" class="input">
             <br>
-            <button type="submit">POST AN AD</button>
+            <button type="submit" class="button">POST AN AD</button>
 
         </form>
     </div>
