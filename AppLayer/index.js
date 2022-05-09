@@ -40,10 +40,31 @@ app.post("/postAd", (req, res) => {
         category: req.body.category,
         date: req.body.date,
         price: req.body.price,
+        currency: req.body.currency,
         description: req.body.description,
         tag: req.body.tag,
         email: req.body.email
     })
+
+})
+app.post("/showAllAds", (req, res) => {
+    axios.get(`http://localhost:3000/getAllAds`)
+        .then(response => {
+            let lineOfData = "";
+            response.data.forEach(element => {
+                lineOfData += `<tr>
+            <td>${element.id}</td>
+            <td>${element.category}</td>
+            <td>${element.date}</td>
+            <td>${element.price}</td>
+            <td>${element.currency}</td>
+            <td>${element.description}</td>
+            <td>${element.tag}</td>
+            <td>${element.email}</td>`
+
+            });
+            res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
+        })
 
 })
 
