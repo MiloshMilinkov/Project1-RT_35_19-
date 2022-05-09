@@ -44,6 +44,18 @@
             border-radius: 10px;
             border: none;
         }
+        
+        #textArea {
+            border: 2px solid currentcolor;
+        }
+        
+        #textArea:invalid {
+            border: 2px dashed red;
+        }
+        
+        #textArea:invalid :focus {
+            border: 2px dashed red;
+        }
     </style>
     <title>Post an add</title>
 </head>
@@ -53,8 +65,17 @@
         <form action="/postAd" method="post">
             Kategorija: <input type="text" name="category" class="input">
             <br> Datum isteka oglasa: <input type="text" name="date" class="input">
-            <br> Cena: <input type="text" name="price" class="input">
-            <br> Deskripcija: <input type="text" name="description" class="input">
+            <br> Cena: <input type="number" name="price" class="input" onkeyup="if(this.value<0){this.value= this.value * -1}" min="0">
+            <!-- <br> Valuta: <input type="text" name="currency" class="input"> -->
+            <br>Valuta:<select name="currency" class="input">
+                    <option value="rsd">rsd</option>
+                    <option value="euros">euros</option>
+                    <option value="pounds">pounds</option>
+                    <option value="dollars">dollars</option>
+                </select>
+            <!-- <br> Deskripcija: <input type="text" name="description" class="input" style="width:200px;"> -->
+            <br> Deskripcija:<textarea rows="5" cols="50" name="description" maxlength="180" class="input" minlength="10" id="textArea">
+                </textarea>
             <br> Tagovi: <input type="text" name="tag" class="input">
             <br> Email:
             <input type="text" name="email" class="input">
