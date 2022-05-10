@@ -3,6 +3,8 @@ const fs = require("fs");
 const app = express();
 const path = require('path');
 const axios = require('axios');
+const { response } = require("express");
+const e = require("express");
 const port = 5000;
 
 app.use(express.urlencoded({ extended: false }));
@@ -10,6 +12,8 @@ app.use(express.json());
 
 let ReadPageName = (name) => {
     return fs.readFileSync(path.join(__dirname + "/Views/" + name + ".html"), "utf-8")
+
+
 }
 
 app.get("/", (req, res) => {
@@ -20,7 +24,7 @@ app.get("/", (req, res) => {
 
 app.get("/AppLayer/Views/viewPage.html", (req, res) => {
     console.log("viewPage")
-    res.send(ReadPageName("viewPage"))
+    res.send(ReadPageName("viewPage").replace("#{data}", ""));
 
 });
 
@@ -65,7 +69,34 @@ app.post("/showAllAds", (req, res) => {
             });
             res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
         })
-
 })
+
+app.post("/showAllAdsById", (req, res) => {
+    axios.get(`http://localhost:3000/getAllAdsById?id=${req.body.id}`)
+        .then(response => {
+            if (response.data.id == undefined) {
+                console.log("nema id")
+                res.send(ReadPageName("viewPage").replace("#{data}", "Nema id!"));
+            } else {
+                let lineOfData = "";
+                lineOfData += `<tr>
+                <td>${response.data.id}</td>
+                <td>${response.data.category}</td>
+                <td>${response.data.date}</td>
+                <td>${response.data.price}</td>
+                <td>${response.data.currency}</td>
+                <td>${response.data.description}</td>
+                <td>${response.data.tag}</td>
+                <td>${response.data.email}</td>`
+
+                res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
+            }
+
+
+
+        })
+
+
+});
 
 app.listen(port, () => { console.log(`klijent na portu ${port}`) });
