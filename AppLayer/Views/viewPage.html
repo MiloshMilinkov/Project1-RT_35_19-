@@ -23,20 +23,21 @@
             margin-top: 100px;
             padding: 25px;
             background-color: #ff9a8d;
-            border: 1px solid black;
+            border: none;
             text-align: center;
             width: 25%;
             border-radius: 10px;
         }
         
         #tableContainer {
+            width: fit-content;
+            height: fit-content;
             margin: auto;
             padding: 25px;
             margin-top: 10px;
             background-color: #ff9a8d;
-            border: 1px solid black;
+            border: none;
             text-align: center;
-            width: 25%;
             border-radius: 10px;
         }
         
@@ -60,6 +61,11 @@
     <div id="formContainer">
         <form action="/showAllAds" method="post">
             <p>Press to view all stored ads!</p>
+            <button type="submit">View</button>
+        </form>
+        <form action="/showAllAdsById" method="post">
+            <p>View ads by Id!</p>
+            <input type="text" name="id">
             <button type="submit">View</button>
         </form>
     </div>

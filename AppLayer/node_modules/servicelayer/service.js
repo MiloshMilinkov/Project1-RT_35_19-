@@ -13,5 +13,8 @@ app.post('/postAd', (request, response) => {
 app.get('/getAllAds', (request, response) => {
     response.send(repository.readAllAds());
 })
+app.get('/getAllAdsById', (request, response) => {
+    response.send(repository.getAdById(request.query["id"]));
+})
 
 app.listen(port, () => { console.log(`startovan server na portu ${port}`) });
