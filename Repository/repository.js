@@ -26,3 +26,18 @@ exports.addAd = (newAd) => {
     ads.push(newAd)
     saveDatatoFile(ads);
 }
+exports.deleteAd = (id) => {
+    saveDatatoFile(this.readAllAds().filter(ad => ad.id != id));
+}
+exports.getAdById = (id) => {
+    return this.readAllAds().find(ad => ad.id == id);
+}
+exports.getAdByCategory = (category) => {
+    return this.readAllAds().find(ad => ad.category == category);
+}
+exports.getAdByTag = (tag) => {
+    return this.readAllAds().find(ad => ad.tag == tag);
+}
+exports.deleteAd = (id) => {
+    saveDatatoFile(this.readAllAds().filter(ad => ad.id != id));
+}
