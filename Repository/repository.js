@@ -19,6 +19,7 @@ exports.readAllAds = () => {
 exports.addAd = (newAd) => {
     let id = 1;
     const currencies = ["rsd", "euros", "pounds", "dollars"];
+
     let date_regex = /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
     let email_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let ads = this.readAllAds();
