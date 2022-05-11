@@ -18,14 +18,30 @@ exports.readAllAds = () => {
 
 exports.addAd = (newAd) => {
     let id = 1;
+    const currencies = ["rsd", "euros", "pounds", "dollars"];
+    let badData = 0;
+    let date_regex = /(((20[012]\d|19\d\d)|(1\d|2[0123]))-((0[0-9])|(1[012]))-((0[1-9])|([12][0-9])|(3[01])))|(((0[1-9])|([12][0-9])|(3[01]))-((0[0-9])|(1[012]))-((20[012]\d|19\d\d)|(1\d|2[0123])))|(((20[012]\d|19\d\d)|(1\d|2[0123]))\/((0[0-9])|(1[012]))\/((0[1-9])|([12][0-9])|(3[01])))|(((0[0-9])|(1[012]))\/((0[1-9])|([12][0-9])|(3[01]))\/((20[012]\d|19\d\d)|(1\d|2[0123])))|(((0[1-9])|([12][0-9])|(3[01]))\/((0[0-9])|(1[012]))\/((20[012]\d|19\d\d)|(1\d|2[0123])))|(((0[1-9])|([12][0-9])|(3[01]))\.((0[0-9])|(1[012]))\.((20[012]\d|19\d\d)|(1\d|2[0123])))|(((20[012]\d|19\d\d)|(1\d|2[0123]))\.((0[0-9])|(1[012]))\.((0[1-9])|([12][0-9])|(3[01])))/;
     let ads = this.readAllAds();
-    if (ads.length > 0) {
-        id = ads[ads.length - 1].id + 1;
+    if (newAd.description.length < 10 || newAd.description.length > 180) {
+        console.log("incorrect desc data!")
+    } else if (currencies.indexOf(newAd.currency) == -1) {
+        console.log("incorrect currency data!")
+    } else if (newAd.price == NaN || newAd.price < 0) {
+        console.log("incorrect price data!")
+    } else {
+        if (ads.length > 0) {
+            id = ads[ads.length - 1].id + 1;
+        }
+        newAd.id = id;
+        ads.push(newAd)
+        saveDatatoFile(ads);
     }
-    newAd.id = id;
-    ads.push(newAd)
-    saveDatatoFile(ads);
+
+
+
+
 }
+
 exports.deleteAd = (id) => {
     saveDatatoFile(this.readAllAds().filter(ad => ad.id != id));
 }
