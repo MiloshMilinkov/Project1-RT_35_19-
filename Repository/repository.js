@@ -48,9 +48,7 @@ exports.deleteAd = (id) => {
     saveDatatoFile(this.readAllAds().filter(ad => ad.id != id));
 }
 exports.getAdById = (id) => {
-
-    return this.readAllAds().find(ad => ad.id == id);
-
+    return this.readAllAds().filter(ad => ad.id == id);
 
 }
 exports.getAdByCategory = (category) => {

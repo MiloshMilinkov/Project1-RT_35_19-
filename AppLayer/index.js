@@ -97,6 +97,50 @@ app.post("/showAllAdsById", (req, res) => {
         })
 
 
-});
+})
+app.post("/showAllAdsEdit", (req, res) => {
+    axios.get(`http://localhost:3000/getAllAds`)
+        .then(response => {
+            let lineOfData = "";
+            response.data.forEach(element => {
+                lineOfData += `<tr>
+            <td>${element.id}</td>
+            <td>${element.category}</td>
+            <td>${element.date}</td>
+            <td>${element.price}</td>
+            <td>${element.currency}</td>
+            <td>${element.description}</td>
+            <td>${element.tag}</td>
+            <td>${element.email}</td>
+            <td><a href="/delete/${element.id}">Obrisi</a></td>`
 
+            });
+            res.send(ReadPageName("editPage").replace("#{data}", lineOfData));
+        })
+})
+
+app.get("/showAllAdsEdit", (req, res) => {
+    axios.get(`http://localhost:3000/getAllAds`)
+        .then(response => {
+            let lineOfData = "";
+            response.data.forEach(element => {
+                lineOfData += `<tr>
+            <td>${element.id}</td>
+            <td>${element.category}</td>
+            <td>${element.date}</td>
+            <td>${element.price}</td>
+            <td>${element.currency}</td>
+            <td>${element.description}</td>
+            <td>${element.tag}</td>
+            <td>${element.email}</td>
+            <td><a href="/delete/${element.id}">Obrisi</a></td>`
+
+            });
+            res.send(ReadPageName("editPage").replace("#{data}", lineOfData));
+        })
+})
+app.get("/delete/:id", (req, res) => {
+    axios.delete(`http://localhost:3000/DeleteAdsById/${req.params["id"]}`)
+    res.redirect("/showAllAdsEdit")
+});
 app.listen(port, () => { console.log(`klijent na portu ${port}`) });
