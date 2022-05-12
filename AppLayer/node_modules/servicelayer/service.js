@@ -16,5 +16,8 @@ app.get('/getAllAds', (request, response) => {
 app.get('/getAllAdsById', (request, response) => {
     response.send(repository.getAdById(request.query["id"]));
 })
-
+app.delete('/DeleteAdsById/:id', (request, response) => {
+    repository.deleteAd(request.params["id"]);
+    response.end("Ad deleted");
+});
 app.listen(port, () => { console.log(`startovan server na portu ${port}`) });
