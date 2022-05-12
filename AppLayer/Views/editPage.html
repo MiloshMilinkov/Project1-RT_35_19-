@@ -85,8 +85,12 @@
         <form action="/ChangeAdsCategory" method="post">
             <fieldset style="width: 125px;margin:auto;">
                 <legend>Change ads category:</legend>
-                Id:<input type="number" placeholder="Provide an id" name="id" required><br> Category:
-                <input type="text" placeholder="New Category" name="category" required>
+                Id:<input type="number" placeholder="Provide an id" name="id" required><br>Category: <select name="category" class="input" required>
+                    <option value="stanovi">stanovi</option>
+                    <option value="alati">alati</option>
+                    <option value="automobili">automobili</option>
+                    <option value="sokovi">sokovi</option>
+                </select>
                 <br>
                 <br><button class="button" type="submit">Change</button>
             </fieldset>
@@ -94,7 +98,7 @@
         <form action="/ChangeAdsPrice" method="post">
             <fieldset style="width: 125px;margin:auto;">
                 <legend>Change ads price:</legend>
-                Id:<input type="number" placeholder="Provide an id" name="id" required><br> Category:
+                Id:<input type="number" placeholder="Provide an id" name="id" required><br> Price:
                 <input type="number" placeholder="New Price" name="price" onkeyup="if(this.value<0){this.value= this.value * -1}" min="0" required>
                 <br>
                 <br><button class="button" type="submit">Change</button>

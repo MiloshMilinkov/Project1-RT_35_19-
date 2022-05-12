@@ -85,7 +85,12 @@
         </form>
         <br>
         <form action="/showAllAdsByCategory" method="get">
-            Filter by:<input type="text" name="category" placeholder="category">
+            Filter By: <select name="category" class="input" required>
+                <option value="stanovi">stanovi</option>
+                <option value="alati">alati</option>
+                <option value="automobili">automobili</option>
+                <option value="sokovi">sokovi</option>
+            </select>
             <button type="submit" class="button">FILTER</button>
         </form>
         <br>
