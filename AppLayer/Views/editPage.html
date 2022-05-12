@@ -54,6 +54,23 @@
             border: 1px solid;
             border-collapse: collapse;
         }
+        
+        .button {
+            border-radius: 10px;
+            border: none;
+            background-color: #aed6dc;
+            font-size: 15px;
+            padding: 5px;
+        }
+        
+        .button:hover {
+            transition: 0.7s;
+            border-radius: 10px;
+            border: none;
+            background-color: #45c6ee;
+            font-size: 20px;
+            padding: 5px;
+        }
     </style>
 </head>
 
@@ -62,21 +79,22 @@
         <form action="/showAllAdsById" method="post">
             <p></p>
             View ADS by Id: <input type="text" name="id">
-            <button type="submit">VIEW</button>
+            <button class="button" type="submit">VIEW</button>
         </form>
         <br>
-        <form action="/DeleteAdsById" method="post">
-            Delete ADS by Id: <input type="text" name="id">
-            <button type="submit">DELETE</button>
-        </form>
-        <br>
-        <form action="/AppLayer/Views/addPage.html" method="post">
-            <button type="submit">POST A NEW AD!</button>
+        <form action="/AppLayer/Views/addPage.html" method="get">
+            <button class="button" type="submit">POST A NEW AD!</button>
         </form>
         <br>
         <form action="/showAllAdsEdit" method="post">
-            <button type="submit">View all ADS</button>
+            <button class="button" type="submit">View all ADS</button>
         </form>
+        <br>
+        <form action="/" method="get" style="float: left;">
+            <button class="button" type="submit"><=INDEX PAGE</button>
+        </form>
+
+        <br>
     </div>
     <div id="tableContainer">
         <table id="table">
