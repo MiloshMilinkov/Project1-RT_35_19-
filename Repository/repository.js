@@ -50,7 +50,26 @@ exports.addAd = (sentAd) => {
         saveDatatoFile(ads);
     }
 }
+exports.changeCategory = (id, category) => {
+    let ads = this.readAllAds();
+    ads.forEach(element => {
+        if (element.id == id) {
+            element.category = category;
+        }
 
+    })
+    saveDatatoFile(ads);
+}
+exports.changePrice = (id, price) => {
+    let ads = this.readAllAds();
+    ads.forEach(element => {
+        if (element.id == id) {
+            element.price = price;
+        }
+
+    })
+    saveDatatoFile(ads);
+}
 exports.deleteAd = (id) => {
     saveDatatoFile(this.readAllAds().filter(ad => ad.id != id));
 }

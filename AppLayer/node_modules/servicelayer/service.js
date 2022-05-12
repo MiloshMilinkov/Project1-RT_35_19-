@@ -23,6 +23,14 @@ app.delete('/DeleteAdsById/:id', (request, response) => {
     repository.deleteAd(request.params["id"]);
     response.end("Ad deleted");
 });
+app.put('/ChangeCategory/:id/:category', (request, response) => {
+    repository.changeCategory(request.params["id"], request.params["category"]);
+    response.send(repository.readAllAds());
+});
+app.put('/ChangePrice/:id/:price', (request, response) => {
+    repository.changePrice(request.params["id"], request.params["price"]);
+    response.send(repository.readAllAds());
+});
 app.get('/showAllAdsByTags', (request, response) => {
     response.send(repository.getAdByTag(request.query["tag"]));
 })
