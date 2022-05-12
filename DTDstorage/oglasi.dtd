@@ -1,12 +1,13 @@
 
-<!ELEMENT Oglasi (Oglas+)>
-<!ELEMENT Oglas (Kategorija,DatumIsteka,Cena,Deskripcija,Tagovi*,Email)>
-<!ELEMENT Kategorija (#PCDATA)>
-<!ELEMENT DatumIsteka (#PCDATA)>
-<!ELEMENT Cena (#PCDATA)>
-<!ATTLIST Cena valuta (rsd | euros | pounds | dollars) #REQUIRED>
-<!ELEMENT Deskripcija (#PCDATA)>
-<!ELEMENT Tagovi (Tag+)>
+<!ELEMENT Ads (Ad+)>
+<!ELEMENT Ad (Category,Date,Price,Description,Tags*,Email)>
+<!ELEMENT Category (#PCDATA)>
+<!ELEMENT Date (#PCDATA)>
+<!ELEMENT Price (#PCDATA)>
+<!ATTLIST Price currency (rsd | euros | pounds | dollars) #REQUIRED>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT Tags (Tag+)>
 <!ELEMENT Tag (#PCDATA)>
-<!ELEMENT Email (#PCDATA)>
-<!ATTLIST Email pristup (privatni | sluzbeni) #REQUIRED>
+<!ELEMENT Email (typeOfmail+)>
+<!ELEMENT typeOfmail (#PCDATA)>
+<!ATTLIST typeOfmail type (private | business) #REQUIRED>
