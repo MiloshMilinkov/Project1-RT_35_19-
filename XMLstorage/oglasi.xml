@@ -12,29 +12,33 @@
 <!ELEMENT Email (#PCDATA)>
 <!ATTLIST Email pristup (privatni | sluzbeni) #REQUIRED>
 ]> -->
-<!DOCTYPE Oglasi SYSTEM "../DTDstorage/oglasi.dtd" >
-<Oglasi>
-    <Oglas>
-        <Kategorija>Stanovi</Kategorija>
-        <DatumIsteka>05-07-2022</DatumIsteka>
-        <Cena valuta="rsd">3400.99</Cena>
-        <Deskripcija>Jednosoban stan u strogom centru Borce bez kanalizacije sve na septicku jamu!</Deskripcija>
-        <Tagovi>
+<!DOCTYPE Ads SYSTEM "../DTDstorage/oglasi.dtd" >
+<Ads>
+    <Ad>
+        <Category>Stanovi</Category>
+        <Date>05-07-2022</Date>
+        <Price currency="rsd">3400.99</Price>
+        <Description>Jednosoban stan u strogom centru Borce bez kanalizacije sve na septicku jamu!</Description>
+        <Tags>
             <Tag>Centar</Tag>
             <Tag>Jednosoban</Tag>
-        </Tagovi>
-        <Email pristup="privatni">pera.peric@gmail.com</Email>
-    </Oglas>
+        </Tags>
+        <Email>
+            <typeOfmail type="private">mara.maric@gmail.com </typeOfmail>
+        </Email>
+    </Ad>
 
-     <Oglas>
-        <Kategorija>Alati</Kategorija>
-        <DatumIsteka>05-06-2022</DatumIsteka>
-        <Cena valuta="euros">4200</Cena>
-        <Deskripcija>Set alata za popravku polomljenih sijalica marke Bosch u savrsenom retko koriscenom stanju!</Deskripcija>
-        <Tagovi>
+     <Ad>
+        <Category>Alati</Category>
+        <Date>05-06-2022</Date>
+        <Price currency="euros">4200</Price>
+        <Description>Set alata za popravku polomljenih sijalica marke Bosch u savrsenom retko koriscenom stanju!</Description>
+        <Tags>
             <Tag>Nekorisceno</Tag>
-        </Tagovi>
-        <Email pristup="sluzbeni">mara.maric@gmail.com</Email>
-    </Oglas>
+        </Tags>
+        <Email>
+            <typeOfmail type="business">mara.maric@gmail.com </typeOfmail>
+        </Email>
+    </Ad>
 
-</Oglasi>
+</Ads>
