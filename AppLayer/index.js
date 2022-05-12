@@ -123,6 +123,69 @@ app.get("/showAllAdsById", (req, res) => {
         })
 })
 
+app.get("/showAllAdsByCategory", (req, res) => {
+    axios.get(`http://localhost:3000/getAllAdsByCategory?category=${req.query["category"]}`)
+        .then(response => {
+            let lineOfData = "";
+            let type = "";
+
+            response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
+                lineOfData += `<tr>
+        <td>${element.id}</td>
+        <td>${element.category}</td>
+        <td>${element.date}</td>
+        <td>${element.price}</td>
+        <td>${element.currency}</td>
+        <td>${element.description}</td>
+        <td>${element.tag}</td>
+        <td>${element.email.private}</td>
+        <td>${element.email.business}</td>`
+
+
+            });
+            res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
+        })
+})
+app.get("/showAllAdsByTags", (req, res) => {
+    axios.get(`http://localhost:3000/showAllAdsByTags?tag=${req.query["tag"]}`)
+        .then(response => {
+            let lineOfData = "";
+            let type = "";
+
+            response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
+                lineOfData += `<tr>
+        <td>${element.id}</td>
+        <td>${element.category}</td>
+        <td>${element.date}</td>
+        <td>${element.price}</td>
+        <td>${element.currency}</td>
+        <td>${element.description}</td>
+        <td>${element.tag}</td>
+        <td>${element.email.private}</td>
+        <td>${element.email.business}</td>`
+
+
+            });
+            res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
+        })
+})
+
 app.post("/showAllAdsEdit", (req, res) => {
     axios.get(`http://localhost:3000/getAllAds`)
         .then(response => {
@@ -182,6 +245,39 @@ app.get("/showAllAdsEdit", (req, res) => {
             res.send(ReadPageName("editPage").replace("#{data}", lineOfData));
         })
 })
+
+app.get("/showAllAdsByIdEdit", (req, res) => {
+    axios.get(`http://localhost:3000/getAllAdsById?id=${req.query["id"]}`)
+        .then(response => {
+            let lineOfData = "";
+            let type = "";
+
+            response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
+                lineOfData += `<tr>
+        <td>${element.id}</td>
+        <td>${element.category}</td>
+        <td>${element.date}</td>
+        <td>${element.price}</td>
+        <td>${element.currency}</td>
+        <td>${element.description}</td>
+        <td>${element.tag}</td>
+        <td>${element.email.private}</td>
+        <td>${element.email.business}</td>`
+
+
+            });
+            res.send(ReadPageName("editPage").replace("#{data}", lineOfData));
+        })
+})
+
 app.get("/delete/:id", (req, res) => {
     axios.delete(`http://localhost:3000/DeleteAdsById/${req.params["id"]}`)
     res.redirect("/showAllAdsEdit")
