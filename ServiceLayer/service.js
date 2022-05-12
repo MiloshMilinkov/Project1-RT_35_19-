@@ -16,8 +16,14 @@ app.get('/getAllAds', (request, response) => {
 app.get('/getAllAdsById', (request, response) => {
     response.send(repository.getAdById(request.query["id"]));
 })
+app.get('/getAllAdsByCategory', (request, response) => {
+    response.send(repository.getAdByCategory(request.query["category"]));
+})
 app.delete('/DeleteAdsById/:id', (request, response) => {
     repository.deleteAd(request.params["id"]);
     response.end("Ad deleted");
 });
+app.get('/showAllAdsByTags', (request, response) => {
+    response.send(repository.getAdByTag(request.query["tag"]));
+})
 app.listen(port, () => { console.log(`startovan server na portu ${port}`) });

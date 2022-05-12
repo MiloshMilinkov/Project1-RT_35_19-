@@ -59,10 +59,10 @@ exports.getAdById = (id) => {
 
 }
 exports.getAdByCategory = (category) => {
-    return this.readAllAds().find(ad => ad.category == category);
+    return this.readAllAds().filter(ad => ad.category == category);
 }
 exports.getAdByTag = (tag) => {
-    return this.readAllAds().find(ad => ad.tag == tag);
+    return this.readAllAds().filter(ad => ad.tag == tag);
 }
 exports.deleteAd = (id) => {
     saveDatatoFile(this.readAllAds().filter(ad => ad.id != id));
