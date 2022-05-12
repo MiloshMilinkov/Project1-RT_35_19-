@@ -54,7 +54,8 @@ app.post("/postAd", (req, res) => {
         currency: req.body.currency,
         description: req.body.description,
         tag: req.body.tag,
-        email: req.body.email
+        email: req.body.email,
+        type: req.body.type
     })
 
 })
@@ -80,13 +81,14 @@ app.post("/showAllAds", (req, res) => {
 
 app.post("/showAllAdsById", (req, res) => {
     axios.get(`http://localhost:3000/getAllAdsById?id=${req.body.id}`)
-        .then(response => {
-            if (response.data.id == undefined) {
-                console.log("nema id")
-                res.send(ReadPageName("viewPage").replace("#{data}", "Nema id!"));
-            } else {
-                let lineOfData = "";
-                lineOfData += `<tr>
+
+    .then(response => {
+        if (response.data.id == undefined) {
+            console.log("nema id")
+            res.send(ReadPageName("viewPage").replace("#{data}", "Nema id!"));
+        } else {
+            let lineOfData = "";
+            lineOfData += `<tr>
                 <td>${response.data.id}</td>
                 <td>${response.data.category}</td>
                 <td>${response.data.date}</td>
@@ -96,14 +98,12 @@ app.post("/showAllAdsById", (req, res) => {
                 <td>${response.data.tag}</td>
                 <td>${response.data.email}</td>`
 
-                res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
-            }
+            res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
+        }
 
 
 
-        })
-
-
+    })
 })
 app.post("/showAllAdsEdit", (req, res) => {
     axios.get(`http://localhost:3000/getAllAds`)
