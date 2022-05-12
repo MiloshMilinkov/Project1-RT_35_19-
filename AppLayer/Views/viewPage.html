@@ -79,7 +79,7 @@
         <form action="/showAllAds" method="post">
             <button class="button" type="submit">View all ADS</button>
         </form>
-        <form action="/showAllAdsById" method="post">
+        <form action="/showAllAdsById" method="get">
             Filter by:<input type="text" name="id" value="id">
             <button type="submit" class="button">FILTER</button>
         </form>
@@ -111,7 +111,8 @@
                     <td>Valuta</td>
                     <td>Deskripcija</td>
                     <td>Tagovi</td>
-                    <td>Email</td>
+                    <td>Email privatni</td>
+                    <td>Email sluzbeni</td>
                 </tr>
             </thead>
             <tbody id="tbody">

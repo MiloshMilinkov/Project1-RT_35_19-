@@ -21,7 +21,6 @@ exports.addAd = (sentAd) => {
     let newAd = {};
     const currencies = ["rsd", "euros", "pounds", "dollars"];
 
-    let date_regex = /^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/;
     let email_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let ads = this.readAllAds();
     if (sentAd.description.length < 10 || sentAd.description.length > 180) {
@@ -30,9 +29,7 @@ exports.addAd = (sentAd) => {
         console.log("incorrect currency data!")
     } else if (sentAd.price == NaN || sentAd.price < 0) {
         console.log("incorrect price data!")
-    } else if (!date_regex.test(sentAd.date)) {
-        console.log("incorrect date data!")
-    } else if (sentAd.type != "private" || sentAd.type != "business") {
+    } else if (sentAd.type != "private" && sentAd.type != "business") {
         console.log("incorrect email type data!")
     } else if (!email_regex.test(sentAd.email)) {
         console.log("incorrect email data!")
@@ -47,9 +44,8 @@ exports.addAd = (sentAd) => {
         newAd.currency = sentAd.currency;
         newAd.description = sentAd.description;
         newAd.tag = sentAd.tag;
-        newAd.email = {};
+        newAd.email = {}
         newAd.email[sentAd.type] = sentAd.email;
-
         ads.push(newAd)
         saveDatatoFile(ads);
     }

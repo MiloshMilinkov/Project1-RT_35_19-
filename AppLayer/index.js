@@ -63,7 +63,17 @@ app.post("/showAllAds", (req, res) => {
     axios.get(`http://localhost:3000/getAllAds`)
         .then(response => {
             let lineOfData = "";
+            let type = "";
+
             response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
                 lineOfData += `<tr>
             <td>${element.id}</td>
             <td>${element.category}</td>
@@ -72,44 +82,60 @@ app.post("/showAllAds", (req, res) => {
             <td>${element.currency}</td>
             <td>${element.description}</td>
             <td>${element.tag}</td>
-            <td>${element.email}</td>`
+            <td>${element.email.private}</td>
+            <td>${element.email.business}</td>`
+
 
             });
             res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
         })
 })
 
-app.post("/showAllAdsById", (req, res) => {
-    axios.get(`http://localhost:3000/getAllAdsById?id=${req.body.id}`)
-
-    .then(response => {
-        if (response.data.id == undefined) {
-            console.log("nema id")
-            res.send(ReadPageName("viewPage").replace("#{data}", "Nema id!"));
-        } else {
+app.get("/showAllAdsById", (req, res) => {
+    axios.get(`http://localhost:3000/getAllAdsById?id=${req.query["id"]}`)
+        .then(response => {
             let lineOfData = "";
-            lineOfData += `<tr>
-                <td>${response.data.id}</td>
-                <td>${response.data.category}</td>
-                <td>${response.data.date}</td>
-                <td>${response.data.price}</td>
-                <td>${response.data.currency}</td>
-                <td>${response.data.description}</td>
-                <td>${response.data.tag}</td>
-                <td>${response.data.email}</td>`
+            let type = "";
 
+            response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
+                lineOfData += `<tr>
+        <td>${element.id}</td>
+        <td>${element.category}</td>
+        <td>${element.date}</td>
+        <td>${element.price}</td>
+        <td>${element.currency}</td>
+        <td>${element.description}</td>
+        <td>${element.tag}</td>
+        <td>${element.email.private}</td>
+        <td>${element.email.business}</td>`
+
+
+            });
             res.send(ReadPageName("viewPage").replace("#{data}", lineOfData));
-        }
-
-
-
-    })
+        })
 })
+
 app.post("/showAllAdsEdit", (req, res) => {
     axios.get(`http://localhost:3000/getAllAds`)
         .then(response => {
             let lineOfData = "";
             response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
                 lineOfData += `<tr>
             <td>${element.id}</td>
             <td>${element.category}</td>
@@ -118,7 +144,8 @@ app.post("/showAllAdsEdit", (req, res) => {
             <td>${element.currency}</td>
             <td>${element.description}</td>
             <td>${element.tag}</td>
-            <td>${element.email}</td>
+            <td>${element.email.private}</td>
+            <td>${element.email.business}</td>
             <td><a href="/delete/${element.id}">Obrisi</a></td>`
 
             });
@@ -131,6 +158,14 @@ app.get("/showAllAdsEdit", (req, res) => {
         .then(response => {
             let lineOfData = "";
             response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
                 lineOfData += `<tr>
             <td>${element.id}</td>
             <td>${element.category}</td>
@@ -139,7 +174,8 @@ app.get("/showAllAdsEdit", (req, res) => {
             <td>${element.currency}</td>
             <td>${element.description}</td>
             <td>${element.tag}</td>
-            <td>${element.email}</td>
+            <td>${element.email.private}</td>
+            <td>${element.email.business}</td>
             <td><a href="/delete/${element.id}">Obrisi</a></td>`
 
             });
