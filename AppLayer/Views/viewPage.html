@@ -54,20 +54,51 @@
             border: 1px solid;
             border-collapse: collapse;
         }
+        
+        .button {
+            border-radius: 10px;
+            border: none;
+            background-color: #aed6dc;
+            font-size: 15px;
+            padding: 5px;
+        }
+        
+        .button:hover {
+            transition: 0.7s;
+            border-radius: 10px;
+            border: none;
+            background-color: #45c6ee;
+            font-size: 20px;
+            padding: 5px;
+        }
     </style>
 </head>
 
 <body id="container">
     <div id="formContainer">
         <form action="/showAllAds" method="post">
-            <p>Press to view all stored ads!</p>
-            <button type="submit">View</button>
+            <button class="button" type="submit">View all ADS</button>
         </form>
         <form action="/showAllAdsById" method="post">
-            <p>View ads by Id!</p>
-            <input type="text" name="id">
-            <button type="submit">View</button>
+            Filter by:<input type="text" name="id" value="id">
+            <button type="submit" class="button">FILTER</button>
         </form>
+        <br>
+        <form action="/showAllAdsByCategory" method="post">
+            Filter by:<input type="text" name="category" value="category">
+            <button type="submit" class="button">FILTER</button>
+        </form>
+        <br>
+        <form action="/showAllAdsByTags" method="post">
+            Filter by:<input type="text" name="tag" value="tags">
+            <button type="submit" class="button">FILTER</button>
+        </form>
+        <br>
+        <form action="/" method="get" style="float: left;">
+            <button class="button" type="submit"><=INDEX PAGE</button>
+        </form>
+
+        <br>
     </div>
     <div id="tableContainer">
         <table id="table">
@@ -87,6 +118,7 @@
                 #{data}
             </tbody>
         </table>
+
     </div>
 
 </body>

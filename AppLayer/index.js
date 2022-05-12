@@ -33,9 +33,16 @@ app.get("/AppLayer/Views/editPage.html", (req, res) => {
     res.send(ReadPageName("editPage"))
 
 });
+
 app.get("/AppLayer/Views/addPage.html", (req, res) => {
     console.log("addPage")
     res.send(ReadPageName("addPage"))
+
+});
+
+app.get("/", (req, res) => {
+    console.log("index")
+    res.send(ReadPageName("index"))
 
 });
 
