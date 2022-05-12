@@ -278,6 +278,69 @@ app.get("/showAllAdsByIdEdit", (req, res) => {
         })
 })
 
+app.post("/ChangeAdsCategory", (req, res) => {
+    axios.put(`http://localhost:3000/ChangeCategory/${req.body.id}/${req.body.category}`)
+        .then(response => {
+            let lineOfData = "";
+
+
+            response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
+                lineOfData += `<tr>
+        <td>${element.id}</td>
+        <td>${element.category}</td>
+        <td>${element.date}</td>
+        <td>${element.price}</td>
+        <td>${element.currency}</td>
+        <td>${element.description}</td>
+        <td>${element.tag}</td>
+        <td>${element.email.private}</td>
+        <td>${element.email.business}</td>`
+
+
+            });
+            res.send(ReadPageName("editPage").replace("#{data}", lineOfData));
+        })
+})
+
+app.post("/ChangeAdsPrice", (req, res) => {
+    axios.put(`http://localhost:3000/ChangePrice/${req.body.id}/${req.body.price}`)
+        .then(response => {
+            let lineOfData = "";
+
+
+            response.data.forEach(element => {
+                if (element.email.business == undefined) {
+                    element.email.business = ""
+                    private = "private"
+                }
+                if (element.email.private == undefined) {
+                    element.email.private = ""
+                    business = "business"
+                }
+                lineOfData += `<tr>
+        <td>${element.id}</td>
+        <td>${element.category}</td>
+        <td>${element.date}</td>
+        <td>${element.price}</td>
+        <td>${element.currency}</td>
+        <td>${element.description}</td>
+        <td>${element.tag}</td>
+        <td>${element.email.private}</td>
+        <td>${element.email.business}</td>`
+
+
+            });
+            res.send(ReadPageName("editPage").replace("#{data}", lineOfData));
+        })
+})
 app.get("/delete/:id", (req, res) => {
     axios.delete(`http://localhost:3000/DeleteAdsById/${req.params["id"]}`)
     res.redirect("/showAllAdsEdit")

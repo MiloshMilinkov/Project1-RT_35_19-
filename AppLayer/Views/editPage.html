@@ -81,18 +81,38 @@
             <button class="button" type="submit">VIEW</button>
         </form>
         <br>
+
+        <form action="/ChangeAdsCategory" method="post">
+            <fieldset style="width: 125px;margin:auto;">
+                <legend>Change ads category:</legend>
+                Id:<input type="number" placeholder="Provide an id" name="id" required><br> Category:
+                <input type="text" placeholder="New Category" name="category" required>
+                <br>
+                <br><button class="button" type="submit">Change</button>
+            </fieldset>
+        </form>
+        <form action="/ChangeAdsPrice" method="post">
+            <fieldset style="width: 125px;margin:auto;">
+                <legend>Change ads price:</legend>
+                Id:<input type="number" placeholder="Provide an id" name="id" required><br> Category:
+                <input type="number" placeholder="New Price" name="price" onkeyup="if(this.value<0){this.value= this.value * -1}" min="0" required>
+                <br>
+                <br><button class="button" type="submit">Change</button>
+            </fieldset>
+        </form>
+        <br>
         <form action="/AppLayer/Views/addPage.html" method="get">
             <button class="button" type="submit">POST A NEW AD!</button>
         </form>
         <br>
         <form action="/showAllAdsEdit" method="post">
+
             <button class="button" type="submit">View all ADS</button>
         </form>
         <br>
         <form action="/" method="get" style="float: left;">
             <button class="button" type="submit"><=INDEX PAGE</button>
         </form>
-
         <br>
     </div>
     <div id="tableContainer">
